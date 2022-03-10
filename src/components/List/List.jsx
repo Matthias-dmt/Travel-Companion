@@ -13,11 +13,9 @@ import PLaceDetails from "../PlaceDetails/PlaceDetails";
 
 import useStyles from "./styles";
 
-const List = ({ places, childClicked, loading }) => {
+const List = ({ places, childClicked, loading, type, setType, rating, setRating }) => {
   const classes = useStyles();
 
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("");
   const [elRefs, setElrefs] = useState([]);
 
   useEffect(() => {
@@ -27,7 +25,6 @@ const List = ({ places, childClicked, loading }) => {
     setElrefs(refs);
   }, [places]);
 
-  console.log(elRefs);
   return (
     <div className={classes.container}>
       <Typography variant="h4">
