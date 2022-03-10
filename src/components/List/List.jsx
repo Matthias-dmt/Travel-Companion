@@ -13,7 +13,15 @@ import PLaceDetails from "../PlaceDetails/PlaceDetails";
 
 import useStyles from "./styles";
 
-const List = ({ places, childClicked, loading, type, setType, rating, setRating }) => {
+const List = ({
+  places,
+  childClicked,
+  loading,
+  type,
+  setType,
+  rating,
+  setRating,
+}) => {
   const classes = useStyles();
 
   const [elRefs, setElrefs] = useState([]);
@@ -27,7 +35,7 @@ const List = ({ places, childClicked, loading, type, setType, rating, setRating 
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4">
+      <Typography variant="h5">
         Restaurants, Hotels & Attractions around you
       </Typography>
       {loading ? (
@@ -55,19 +63,15 @@ const List = ({ places, childClicked, loading, type, setType, rating, setRating 
           </FormControl>
 
           <Grid container spacing={3} className={classes.list}>
-            {places?.map(
-              (place, i) =>
-                place.latitude &&
-                place.longitude && (
-                  <Grid ref={elRefs[i]} item key={i} xs={12}>
-                    <PLaceDetails
-                      place={place}
-                      selected={Number(childClicked) === i}
-                      refProp={elRefs[i]}
-                    />
-                  </Grid>
-                )
-            )}
+            {places?.map((place, i) => (
+              <Grid ref={elRefs[i]} item key={i} xs={12}>
+                <PLaceDetails
+                  place={place}
+                  selected={Number(childClicked) === i}
+                  refProp={elRefs[i]}
+                />
+              </Grid>
+            ))}
           </Grid>
         </>
       )}
